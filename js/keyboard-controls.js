@@ -121,7 +121,7 @@ $(document).ready(function(){
 
                 case 13: //enter
                     alert("Images selected: "+selected_images);
-                    window.location.href="index.html";
+                    $(document).retrieve_xml_data();
                 break;
             }
         });
@@ -129,11 +129,18 @@ $(document).ready(function(){
 
     $.fn.retrieve_xml_data = function(){
         $.get('images/image-data.xml', function(d){
+
+            $('body').append('<h1> Images </h1>');
+            $('body').append('<dl />');
+
             $(d).find('image').each(function(){
                 var $image = $(this);
                 var link = image.attr("href");
                 var description = $image.find('description').text();
                 var id = image.attr("id");
+
+                alert(id);
+
             });
         });
     };
