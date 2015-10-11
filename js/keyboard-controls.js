@@ -9,6 +9,8 @@ $(document).ready(function(){
     var selected_images = [];
     var already_selected = false;
     var previous_image = "#image1";
+    var imageToAnalyze = [-5,-4,-3,-2,-1,0];
+    var imageToAnalyze_String = [];
 
     //Based on keyboard input, will change the background color to the selected image, thus highlighting it
     $.fn.change_color = function() {
@@ -55,7 +57,7 @@ $(document).ready(function(){
         if(selection_flag == 1 && already_selected == false){
             $(current_image).addClass("keep-color");
             $(current_image).css("background-color","red");
-            selected_images.push(img_num);
+            selected_images.push($(current_image).attr("src"));
         }
 
         //arrow key pressed, previously not selected
@@ -78,10 +80,43 @@ $(document).ready(function(){
         return this;
     };
 
+    //Repopulate page with new images
+    $.fn.updateImages = function() {
+        //Reset highlighted image to top left corner
+        $(current_image).css("background-color","#ccc");
+        //Clear selections
+        $("#image1").removeClass("keep-color");        
+        $("#image2").removeClass("keep-color");
+        $("#image3").removeClass("keep-color");
+        $("#image4").removeClass("keep-color");
+        $("#image5").removeClass("keep-color");
+        $("#image6").removeClass("keep-color");        
+        current_image = "#image1";
+        next_image = "#image1";
+        img_num = 1;
+        selection_flag = 0;
+        selected_images = [];
+        already_selected = false;
+        previous_image = "#image1";
+        $(current_image).css("background-color","red");    
+
+        //Change images to new set of six
+        for(i = 0; i < imageToAnalyze.length; i++){
+            imageToAnalyze[i] = imageToAnalyze[i]+6;
+            imageToAnalyze_String[i] ='images/' + imageToAnalyze[i].toString()+'.jpg';
+        }
+        $("#image1").attr("src",imageToAnalyze_String[0]);
+        $("#image2").attr("src",imageToAnalyze_String[1]);
+        $("#image3").attr("src",imageToAnalyze_String[2]);
+        $("#image4").attr("src",imageToAnalyze_String[3]);
+        $("#image5").attr("src",imageToAnalyze_String[4]);
+        $("#image6").attr("src",imageToAnalyze_String[5]);
+    };
+
     $.fn.keyboard_control = function() {
         $("#submit").click(function(){
             alert("Images selected: "+selected_images);
-            window.location.href = "index.html";       
+            $(document).updateImages();      
         });
 
         $(window).keydown(function(e) {
@@ -121,29 +156,12 @@ $(document).ready(function(){
 
                 case 13: //enter
                     alert("Images selected: "+selected_images);
-                    $(document).retrieve_xml_data();
+                    $(document).updateImages();
                 break;
             }
         });
     };
 
-    $.fn.retrieve_xml_data = function(){
-        $.get('images/image-data.xml', function(d){
-
-            $('body').append('<h1> Images </h1>');
-            $('body').append('<dl />');
-
-            $(d).find('image').each(function(){
-                var $image = $(this);
-                var link = image.attr("href");
-                var description = $image.find('description').text();
-                var id = image.attr("id");
-
-                alert(id);
-
-            });
-        });
-    };
-
+    $(document).updateImages();
     $(document).keyboard_control();
 });
