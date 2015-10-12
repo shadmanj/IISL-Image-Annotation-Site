@@ -1,0 +1,15 @@
+.img-thumbnail {
+	background-color: #ccc;
+	cursor: pointer;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.keep-color {
+	opacity: .4;
+	filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
