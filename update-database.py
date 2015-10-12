@@ -2,7 +2,6 @@ import glob
 import csv
 from lxml import etree as et
 import sys
-import json
 
 #Import a list of all files in the directory
 filenames = glob.glob('images/*.jpg')

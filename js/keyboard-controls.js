@@ -11,6 +11,15 @@ $(document).ready(function(){
     var previous_image = "#image1";
     var imageToAnalyze = [-5,-4,-3,-2,-1,0];
     var imageToAnalyze_String = [];
+    var reducedData;
+
+    //Modify JSON data
+    $.fn.modifyJSON = function() {
+        $.get('data.js', function(result) {
+           var json = $.parseJSON(result);
+           alert(json.title); //Do whatever you want here
+        });
+    };
 
     //Based on keyboard input, will change the background color to the selected image, thus highlighting it
     $.fn.change_color = function() {
@@ -111,8 +120,10 @@ $(document).ready(function(){
         $("#image4").attr("src",imageToAnalyze_String[3]);
         $("#image5").attr("src",imageToAnalyze_String[4]);
         $("#image6").attr("src",imageToAnalyze_String[5]);
+        $(document).modifyJSON();
     };
 
+    //Select images using keyboard
     $.fn.keyboard_control = function() {
         $("#submit").click(function(){
             alert("Images selected: "+selected_images);
