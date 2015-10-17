@@ -5,7 +5,7 @@ filenames = glob.glob('images/*.jpg')
 
 n = len(filenames)
 
-data = []
+data = {}
 
 for i in xrange(n):
     data.append([filenames[i],'undamaged','unanalyzed'])
