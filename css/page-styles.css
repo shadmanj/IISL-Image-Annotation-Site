@@ -15,8 +15,9 @@ html, body {
 
 .selection-box {
 position:    absolute;
-background: blue;
-opacity: .5;
-border:     1px dotted #000;
+background: none;
+border-style: double;
+border-width: thick;
+border-color: red;
 }
 
