@@ -23,9 +23,10 @@ $(document).ready(function(){
 
     //Based on keyboard input, will change the background color to the selected image, thus highlighting it
     $.fn.change_color = function() {
+        
         //check if image has already been selected
         for(var i = 0; i < selected_images.length; i++){
-            if (img_num == selected_images[i]){
+            if ($(current_image).attr("src") == selected_images[i]){
                 already_selected = true;
             }
         }
@@ -61,7 +62,7 @@ $(document).ready(function(){
                 current_image = "#image6";
             break;
         }
-
+    
         //spacebar pressed, and image previously not selected
         if(selection_flag == 1 && already_selected == false){
             $(current_image).addClass("keep-color");
@@ -77,7 +78,7 @@ $(document).ready(function(){
         //spacebar pressed, and the image was previously selected
         else if(selection_flag == 1 && already_selected == true){
             selected_images = jQuery.grep(selected_images, function(value){
-                return value != img_num;
+                return value != $(current_image).attr("src");
             });
             $(current_image).css("background-color","red");
             $(current_image).removeClass("keep-color");
@@ -86,7 +87,7 @@ $(document).ready(function(){
 
         already_selected = false;
         selection_flag = 0;
-        return this;
+        //return this;
     };
 
     //Repopulate page with new images

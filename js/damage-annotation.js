@@ -1,6 +1,9 @@
 $(function() {
     var $container = $('#image-to-annotate');
     var $selection = $('<div>').addClass('selection-box');
+    var i = 1;
+    var image = "images/"+i.toString()+".jpg";
+
     
     $container.on('mousedown', function(e) {
         var click_y = e.pageY,
@@ -36,4 +39,16 @@ $(function() {
             //$selection.remove();
         });
     });
+
+    //Submit
+    $(window).on('keydown', function(e) {
+        switch(e.which){
+          case 13:
+            $selection.remove();
+            i = i + 1;
+            image = "images/"+i.toString()+".jpg";
+            document.getElementById("#image").src=image;
+          break;
+        }
+      });
 });
