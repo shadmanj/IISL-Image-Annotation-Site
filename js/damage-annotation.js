@@ -40,7 +40,10 @@ $(function() {
         });
     });
 
+<<<<<<< HEAD
     //Submit
+=======
+>>>>>>> 9dedfb0ad13c274f9c5be60f1d130803ebceb248
     $(window).on('keydown', function(e) {
         switch(e.which){
           case 13:
