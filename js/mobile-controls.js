@@ -37,32 +37,32 @@ $(document).ready(function(){
         $(previous_image).css("background-color", "#ccc");
 
         //Set img-number
-        switch(img_num){
+        // switch(img_num){
 
-            case 1:
-                current_image = "#image1";
-            break;
+        //     case 1:
+        //         current_image = "#image1";
+        //     break;
 
-            case 2:
-                current_image = "#image2";
-            break;
+        //     case 2:
+        //         current_image = "#image2";
+        //     break;
 
-            case 3:
-                current_image = "#image3";
-            break;
+        //     case 3:
+        //         current_image = "#image3";
+        //     break;
 
-            case 4:
-                current_image = "#image4";
-            break;
+        //     case 4:
+        //         current_image = "#image4";
+        //     break;
 
-            case 5:
-                current_image = "#image5";
-            break;
+        //     case 5:
+        //         current_image = "#image5";
+        //     break;
 
-            case 6:
-                current_image = "#image6";
-            break;
-        }
+        //     case 6:
+        //         current_image = "#image6";
+        //     break;
+        // }
     
         //spacebar pressed, and image previously not selected
         if(selection_flag == 1 && already_selected == false){
@@ -132,12 +132,54 @@ $(document).ready(function(){
             $(document).updateImages();      
         });
 
-    	var box1 = document.getElementById('image1');
-    	var box3 = document.getElementById('image2');
-    	var box1 = document.getElementById('image3');
-    	var box4 = document.getElementById('image4');
-    	var box5 = document.getElementById('image5');
-    	var box5 = document.getElementById('image5');
+    	var box1 = "#image1";
+    	var box2 = "#image2";
+    	var box3 = "#image3";
+    	var box4 = "#image4";
+    	var box5 = "#image5";
+    	var box6 = "#image6";
+
+        $(box1).click(function(){
+            current_image = box1;
+            img_num = img_num;
+            selection_flag = 1;
+            $(document).change_color();
+        });
+
+        $(box2).click(function(){
+            current_image = box2;
+            img_num = img_num;
+            selection_flag = 1;
+            $(document).change_color();
+        });
+
+        $(box3).click(function(){
+            current_image = box3;
+            img_num = img_num;
+            selection_flag = 1;
+            $(document).change_color();
+        });
+
+        $(box4).click(function(){
+            current_image = box4;
+            img_num = img_num;
+            selection_flag = 1;
+            $(document).change_color();
+        });
+
+        $(box5).click(function(){
+            current_image = box5;
+            img_num = img_num;
+            selection_flag = 1;
+            $(document).change_color();
+        });
+
+        $(box6).click(function(){
+            current_image = box6;
+            img_num = img_num;
+            selection_flag = 1;
+            $(document).change_color();
+        });      
 
     };
 
