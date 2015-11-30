@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Image Annotation</title>
+	<meta name="author" content="Shadman Jubaer">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/page-styles.css" rel="stylesheet">
 
@@ -17,6 +18,15 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/keyboard-controls.js"></script>
+	
+	<!-- REDIRECT TO MOBILE VERSION IF ON PHONE -->
+	<script type="text/javascript" src="js/ajax.js"></script>
+  	<!--
+  	if (screen.width <= 800) {
+    	window.location = "http://m.domain.com";
+  	}
+  	//-->
+	</script>   
     <style>
     	body {padding-top: 70px;}
     	#main-wrapper {padding-top: 5px;}

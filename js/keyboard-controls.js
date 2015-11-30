@@ -12,6 +12,7 @@ $(document).ready(function(){
     var imageToAnalyze = [-5,-4,-3,-2,-1,0];
     var imageToAnalyze_String = [];
     var reducedData;
+    var damage_status: 'undamaged';
 
     // //Modify JSON data
     // $.fn.modifyJSON = function() {
@@ -122,6 +123,24 @@ $(document).ready(function(){
         $("#image5").attr("src",imageToAnalyze_String[4]);
         $("#image6").attr("src",imageToAnalyze_String[5]);
         //$(document).modifyJSON();
+    };
+
+    //Send data to server
+    $.fn.sendData = function(damage_status){
+        $.ajax({
+            url: 'php/ajax-follow.php',
+            type: 'post',
+            data: {'image': current_image,'status': damage_status},
+            success: function(data, status) {
+                if(data == "ok"){
+                    $(document).change_color();
+                }
+            }
+            error: function(xhr, desc, err){
+                console.log(xhr);
+                logconsole.log("Details: "+ desc + "\nERROR:" + err);
+            }
+        }); //End ajax call
     };
 
     //Select images using keyboard
