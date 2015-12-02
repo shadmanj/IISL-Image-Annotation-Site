@@ -13,16 +13,10 @@ $(document).ready(function(){
     var imageToAnalyze_String = [];
     var reducedData;
     var damage_status= 'undamaged';
+    var damaged_images = {};
+    var damage_counter = 0;
 
 // ---------------------------FUNCTIONS----------------------------------------------
-
-    // //Modify JSON data
-    // $.fn.modifyJSON = function() {
-    //     $.get('http://localhost:8000/data.js', function(result) {
-    //        var json = $.parseJSON(result);
-    //        alert(); //Do whatever you want here
-    //     });
-    // };
 
     //Based on keyboard input, will change the background color to the selected image, thus highlighting it
     $.fn.change_color = function() {
@@ -128,16 +122,19 @@ $(document).ready(function(){
     };
 
     //Send data to server
-    $.fn.sendData = function(damage_status){
-        damage_status = "damaged";
+    $.fn.sendData = function(){
+        while (damage_counter < selected_images.length){
+            damaged_images["image"+damage_counter] = selected_images[i];
+            damage_counter++;
+        }
+        //alert(damaged_images);
         $.ajax({
             url: 'php/ajax-follow.php',
             type: 'post',
-            data: {'image': current_image,'status': damage_status},
+            data: damaged_images,
+            dataType: 'json',
             success: function(data, status) {
-                if(data == "ok"){
-                    $(document).change_color();
-                }
+                alert("Success");
             },
             error: function(xhr, desc, err){
                 console.log(xhr);
@@ -189,8 +186,8 @@ $(document).ready(function(){
                 break;
 
                 case 13: //enter
-                    alert("Images selected: "+selected_images);
-                    // $(document).updateImages();
+                    //alert("Images selected: "+selected_images);
+                    $(document).updateImages();
                     $(document).sendData();
                 break;
             }
