@@ -120,7 +120,7 @@ $(document).ready(function(){
         $("#image6").attr("src",imageToAnalyze_String[5]);
         //$(document).modifyJSON();
     };
-
+/*
     //Send data to server
     $.fn.sendData = function(){
         while (damage_counter < selected_images.length){
@@ -142,7 +142,7 @@ $(document).ready(function(){
             }
         }); //End ajax call
     };
-
+*/
     //Select images using keyboard
     $.fn.keyboard_control = function() {
         $("#submit").click(function(){
@@ -187,8 +187,9 @@ $(document).ready(function(){
 
                 case 13: //enter
                     //alert("Images selected: "+selected_images);
+                    alert("Images selected: "+selected_images);
                     $(document).updateImages();
-                    $(document).sendData();
+                    //$(document).sendData();
                 break;
             }
         });
